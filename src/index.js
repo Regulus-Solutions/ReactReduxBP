@@ -3,10 +3,29 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import axios from 'axios'
+
+/* !!! IMPORTANT !!!
+Setting the following line will allow you to use only 
+subroutes in your requests
+Ex:
+axios.post("/users", {name:"Matt"})
+
+Would request https://localhost:3000/users
+*/
+
+//axios.defaults.baseURL = 'https://localhost:3000';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
